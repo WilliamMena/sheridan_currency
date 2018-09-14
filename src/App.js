@@ -8,11 +8,34 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Sheridan Currency</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          This is an application used for converting currency.
         </p>
+
+
+        <form>
+        <p>
+        Amount: <input type="number" name="amount"/>
+        </p>
+
+        <p>
+          FROM:
+            <select>
+              <option value="usd">USD</option>
+              <option value="eur">EUR</option>
+              <option value="sgd">SGD</option>
+            </select>
+          TO:
+            <select>
+              <option value="usd">USD</option>
+              <option value="eur">EUR</option>
+              <option value="sgd">SGD</option>
+            </select>
+        </p>
+        <input type="submit" value="CONVERT" />
+        </form>
       </div>
     );
   }
