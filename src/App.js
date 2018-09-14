@@ -6,7 +6,9 @@ class App extends Component {
 
   clickHandler = (event) => {
     event.preventDefault()
-    fetch("https://free.currencyconverterapi.com/api/v6/convert?q=EUR_USD&compact=y", {
+    var currency_from = document.querySelector("#currency_from").value
+    var currency_to = document.querySelector("#currency_to").value
+    fetch(`https://free.currencyconverterapi.com/api/v6/convert?q=${currency_from}_${currency_to}&compact=y`, {
       method: "GET",
       mode: "cors", // no-cors, cors, *same-origin
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -18,7 +20,7 @@ class App extends Component {
     }).then( (response) => response.json())
     .then((json) => {
       var amount = document.querySelector("#amount").value
-      var rate = json["EUR_USD"].val
+      var rate = json[`${currency_from}_${currency_to}`].val
       var output = amount * rate
 
       document.querySelector(".output").innerHTML = output
@@ -44,18 +46,18 @@ class App extends Component {
 
         <p>
           <label>FROM: </label>
-            <select>
-              <option id="" value="usd">USD</option>
-              <option id="" value="eur">EUR</option>
-              <option id="" value="sgd">SGD</option>
+            <select id="currency_from" >
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="SGD">SGD</option>
             </select>
         </p>
         <p>
           <label>TO: </label>
-            <select>
-              <option value="usd">USD</option>
-              <option value="eur">EUR</option>
-              <option value="sgd">SGD</option>
+            <select id="currency_to">
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="SGD">SGD</option>
             </select>
         </p>
         <input type="submit" value="CONVERT" onClick={this.clickHandler} />
