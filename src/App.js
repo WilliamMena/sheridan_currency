@@ -21,13 +21,15 @@ class App extends Component {
         </p>
 
         <p>
-          FROM:
+          <label>FROM: </label>
             <select>
               <option value="usd">USD</option>
               <option value="eur">EUR</option>
               <option value="sgd">SGD</option>
             </select>
-          TO:
+        </p>
+        <p>
+          <label>TO: </label>
             <select>
               <option value="usd">USD</option>
               <option value="eur">EUR</option>
@@ -36,6 +38,8 @@ class App extends Component {
         </p>
         <input type="submit" value="CONVERT" />
         </form>
+
+
       </div>
     );
   }
